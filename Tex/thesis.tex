@@ -9,7 +9,7 @@
 %\documentclass[11pt,a4paper,twoside,openright]{report}
 
 \usepackage[a4paper,left=3.5cm, right=2.5cm, top=3.5cm, bottom=3.5cm]{geometry}
-\usepackage[dutch]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 %\usepackage[latin1]{inputenc}           % om niet ascii karakters rechtstreeks te kunnen inputten
 \usepackage[utf8]{inputenc}            % commentarieer deze regel uit als je utf8 encoded files gebruikt in plaats van latin1
@@ -40,7 +40,6 @@
 \graphicspath{{fig/}}
 
 \usepackage{fiiw}
-% \usepackage{fiiw_denayer_eng} % For the english version (also change last page at the bottom of this file!
 
 %door onderstaande regels in commentaar te zetten, of op false, kan je pagina's weglaten
 %bijvoorbeeld het weglaten van een voorwoord, lijst met symbolen, ...
@@ -50,11 +49,11 @@
 \acknowledgements{voorwoord}			%.tex file met daarin het voorwoord
 
 %samenvatting toevoegen
-%\summarypagetrue
+\summarypagetrue
 \summary{samenvatting}					%.tex met daarin de samenvatting
 
 %abstract toevoegen?
-%\abstractpagetrue
+\abstractpagetrue
 \abstracts{abstract}					%.tex file met daarin het abstract
 %lijst van figuren toevoegen?
 %\listoffigurespagetrue
@@ -71,10 +70,10 @@
 \opleiding{E-ICT}
 \afdeling{Software Engineer}
 
-\campus{denayer} %denayer,denayereng,geel,geeleng,gent,ghenteng,groept,groupteng,brugge,brugeseng
+\campus{denayereng} %denayer,denayereng,geel,geeleng,gent,ghenteng,groept,groupteng,brugge,brugeseng
 
 \title{Counting shells}
-\subtitle{Opstartverslag}
+\subtitle{Are current neural networks performant enough to count various types of shells in an uncontrolled environment}
 % \author{naam student}
 \forenameA{ }
 \surnameA{ }
@@ -88,16 +87,15 @@
 \promotorA[Promotor]{Prof. dr. Toon Goedemé}
 
 \begin{document}
-%\selectlanguage{dutch}
-%\selectlanguage{english} % For the english version
+%\selectlanguage{dutch} %due to incompatible syntax with the english style library and the extended features of the dutch library, I'll be modifying the dutch library to be english
+\selectlanguage{english} % For the english version
 \preface
 
-\input{hfdst0}
 \input{hfdst1}
 \input{hfdst2}
-\input{hfdst3}
-\input{hfdst4}
-\input{hfdst5}
+%\input{hfdst3}
+%\input{hfdst4}
+%\input{hfdst5}
 % Bibliografie: referenties. De items zitten in bibliografie.bib
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Indien je ook de niet geciteerde werken in je bibliografie wil opnemen, commentarieer dan onderstaande regel uit!
@@ -111,8 +109,8 @@
 %\input{bijlage1}
 
 % Back cover: change according to the correct campus
-\includepdf{private/back_fiiw_denayer.pdf}
-% \includepdf{private/back_fiiw_denayer_eng.pdf} % For the english version
+%\includepdf{private/back_fiiw_denayer.pdf}
+\includepdf{private/back_fiiw_denayer_eng.pdf} % For the english version
 %\includepdf{private/back_fiiw_geel.pdf}
 % \includepdf{private/back_fiiw_geel_eng.pdf} % For the english version
 %\includepdf{private/back_fiiw_gent.pdf}

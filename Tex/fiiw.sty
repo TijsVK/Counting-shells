@@ -251,7 +251,7 @@
 	\setlength{\TPHorizModule}{1cm}
 	\setlength{\TPVertModule}{0.75cm}
 	\begin{textblock}{5}(5.5,1.5)
-			Academiejaar \@academicyear
+			Academic year  \@academicyear
 	\end{textblock}
 	\cleardoublepage
     \thispagestyle{empty}
@@ -266,10 +266,11 @@
 % get correct copy right info in disclaimer. Implemented in this way as copying only the changing text leads to ugly spaces in the disclaimer
 	\newcommand{\printCopyRightInfo}[1]
 {
-	\ifthenelse{\equal{\@campus}{denayer}}{
-		Zonder voorafgaande schriftelijke toestemming van zowel de promotor(en) als de auteur(s) is overnemen, kopi\"eren, gebruiken of realiseren van deze uitgave of gedeelten ervan verboden. Voor aanvragen i.v.m.~het overnemen en/of gebruik en/of realisatie van gedeelten uit deze publicatie, kan u zich richten tot KU Leuven Technologiecampus De Nayer, Jan De Nayerlaan 5, B-2860 Sint-Katelijne-Waver, +32 15 31 69 44 of via e-mail iiw.denayer@kuleuven.be.
-	}{}
 	\ifthenelse{\equal{\@campus}{denayereng}}{
+		Copyright KU Leuven \\\\
+		Without written permission of the supervisor(s) and the author(s) it is forbidden to reproduce or adapt in any form or by any means any part of this publication. Requests for obtaining the right to reproduce or utilise parts of this publication should be addressed to KU Leuven, Technology Campus De Nayer, Jan De Nayerlaan 5, B-2860 Sint-Katelijne-Waver, +32 15 31 69 44 or via e-mail fet.denayer@kuleuven.be. \\\\
+		A written permission of the supervisor(s) is also required to use the methods, products, schematics and programs described in this work for industrial or commercial use, and for submitting this publication in scientific contests.}{}
+	\ifthenelse{\equal{\@campus}{denayer}}{
 		Zonder voorafgaande schriftelijke toestemming van zowel de promotor(en) als de auteur(s) is overnemen, kopi\"eren, gebruiken of realiseren van deze uitgave of gedeelten ervan verboden. Voor aanvragen i.v.m.~het overnemen en/of gebruik en/of realisatie van gedeelten uit deze publicatie, kan u zich richten tot KU Leuven Technologiecampus De Nayer, Jan De Nayerlaan 5, B-2860 Sint-Katelijne-Waver, +32 15 31 69 44 of via e-mail iiw.denayer@kuleuven.be.
 	}{}
 	\ifthenelse{\equal{\@campus}{geel}}{
@@ -318,11 +319,11 @@
 	\titlep        
 
 	\ifacknowledgementspage 
-		\chapter*{Voorwoord} \@acknowledgementsfile
+		\chapter*{Preface} \@acknowledgementsfile
 	\fi
 	
 	\ifsummarypage
-	\chapter*{Samenvatting} \@summaryfile
+	\chapter*{Summary} \@summaryfile
 	\fi
 
 	\ifabstractpage 
