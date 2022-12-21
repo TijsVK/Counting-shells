@@ -8,7 +8,11 @@
     In this chapter we'll go over the state of the art in the field of object counting. We'll go over the techniques commonly used for counting and go in more depth about the topic of few shot object detection and why it should be applied to our problem. Finally we'll go over the metrics used to evaluate the performance of the models.
 
 \section{Counting}
-    Counting networks are quite an established concept in machine learning as numerous papers tackle the issue of counting humans, cars, animals or cells. What those have in common is that they only encompass a small set of possible categories to count and that, as they have a large real life use, large annotated datasets exist for these problems like ShanghaiTech and COWC. 
+    Counting networks are quite an established concept in machine learning as numerous papers tackle the issue of counting humans, cars, animals or cells. What those have in common is that they only encompass a small set of possible categories to count and that, as they have a large real life use, large annotated datasets exist for these problems like ShanghaiTech and COWC. The problem we're trying to solve is a bit different as we want to count a large set of objects and we don't have a large dataset to train on. 
+    
+    The methodology behind counting networks has two big streams. The first one applies a detection method to the image and then counts the number of detected objects. Many different detection methods can be used, from looking for characteristic features to matching the shape of the objects. The second one gives up on looking for an exact answer as it's too hard, with imperfect or low resolution images, and instead tries to estimate the number of objects in the image.
+
+%https://www.mdpi.com/1424-8220/22/14/5286
 
 %https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/papers/Ranjan_Vicinal_Counting_Networks_CVPRW_2022_paper.pdf
 
