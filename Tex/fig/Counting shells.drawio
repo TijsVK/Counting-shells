@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-27T12:08:45.528Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0" version="20.6.2" etag="dFAe7-H6q3sONhz0Hx7L" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-12-27T12:09:24.395Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0" version="20.6.2" etag="YxCBvbZ_l7uGDe-8jih0" type="github" pages="2">
   <diagram id="__r4vuHzeCIJA-50YF6d" name="Current counting scenario">
     <mxGraphModel dx="2021" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -42,7 +42,7 @@
         <mxCell id="xNskjE86xDGm7wPtTQgc-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-9" target="xNskjE86xDGm7wPtTQgc-14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="xNskjE86xDGm7wPtTQgc-9" value="Go to checkpoint to receive briefing and paper for counting" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="xNskjE86xDGm7wPtTQgc-9" value="Go to checkpoint to receive briefing and paper for counting" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="280" y="490" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xNskjE86xDGm7wPtTQgc-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-14" target="xNskjE86xDGm7wPtTQgc-17">
@@ -83,7 +83,7 @@
         <mxCell id="xNskjE86xDGm7wPtTQgc-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-21" target="xNskjE86xDGm7wPtTQgc-19">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="xNskjE86xDGm7wPtTQgc-21" value="Contact helpdesk" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="xNskjE86xDGm7wPtTQgc-21" value="Contact helpdesk" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="640" y="400" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xNskjE86xDGm7wPtTQgc-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-26">
@@ -98,7 +98,7 @@
         </mxCell>
         <mxCell id="xNskjE86xDGm7wPtTQgc-29" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="xNskjE86xDGm7wPtTQgc-28">
           <mxGeometry x="-0.9425" relative="1" as="geometry">
-            <mxPoint y="34" as="offset" />
+            <mxPoint y="-1" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xNskjE86xDGm7wPtTQgc-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-26" target="xNskjE86xDGm7wPtTQgc-30">
@@ -107,7 +107,7 @@
         <mxCell id="xNskjE86xDGm7wPtTQgc-26" value="Stop?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="970" y="480" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="xNskjE86xDGm7wPtTQgc-30" value="Go back to checkpoint to hand in paper" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="xNskjE86xDGm7wPtTQgc-30" value="Go back to checkpoint to hand in paper" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="1090" y="490" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
