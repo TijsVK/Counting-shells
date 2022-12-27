@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-27T12:09:33.675Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0" version="20.6.2" etag="kebJHYM6DDNvStDULyaR" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-12-27T13:56:05.032Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0" version="20.6.2" etag="6mE1QAxhT2huPKVBqvJY" type="github" pages="2">
   <diagram id="__r4vuHzeCIJA-50YF6d" name="Current counting scenario">
     <mxGraphModel dx="2021" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -48,7 +48,7 @@
         <mxCell id="xNskjE86xDGm7wPtTQgc-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-14" target="xNskjE86xDGm7wPtTQgc-17">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="xNskjE86xDGm7wPtTQgc-14" value="Find shell" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="xNskjE86xDGm7wPtTQgc-14" value="Find shell" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="430" y="490" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xNskjE86xDGm7wPtTQgc-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-17" target="xNskjE86xDGm7wPtTQgc-19">
@@ -77,7 +77,7 @@
         <mxCell id="xNskjE86xDGm7wPtTQgc-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-19" target="xNskjE86xDGm7wPtTQgc-26">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="xNskjE86xDGm7wPtTQgc-19" value="Note down shell" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="xNskjE86xDGm7wPtTQgc-19" value="Note down shell" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="800" y="490" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xNskjE86xDGm7wPtTQgc-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="xNskjE86xDGm7wPtTQgc-21" target="xNskjE86xDGm7wPtTQgc-19">
@@ -118,6 +118,29 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="YPN84MziqaUrl6VArNq2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="b-ycyYs8Z3s47n0Vkk_U-1" target="YPN84MziqaUrl6VArNq2-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b-ycyYs8Z3s47n0Vkk_U-1" value="Take pictures on beach" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YPN84MziqaUrl6VArNq2-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="YPN84MziqaUrl6VArNq2-1" target="YPN84MziqaUrl6VArNq2-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YPN84MziqaUrl6VArNq2-1" value="Send pictures to VLIZ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="250" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YPN84MziqaUrl6VArNq2-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;endArrow=classic;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="YPN84MziqaUrl6VArNq2-3" target="YPN84MziqaUrl6VArNq2-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YPN84MziqaUrl6VArNq2-3" value="Shells in pictures get automatically detected and counted" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YPN84MziqaUrl6VArNq2-7" value="Optional: detections with low confidence get manually checked" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="640" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
