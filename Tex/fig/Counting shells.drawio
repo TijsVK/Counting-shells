@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-27T12:08:25.089Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0" version="20.6.2" etag="2-BSat2cF3lR5VQjlN5w" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-12-27T12:08:45.528Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0" version="20.6.2" etag="dFAe7-H6q3sONhz0Hx7L" type="github" pages="2">
   <diagram id="__r4vuHzeCIJA-50YF6d" name="Current counting scenario">
     <mxGraphModel dx="2021" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -90,8 +90,7 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="430" y="520" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1120" y="520" />
-              <mxPoint x="1120" y="600" />
+              <mxPoint x="1010" y="600" />
               <mxPoint x="410" y="600" />
               <mxPoint x="410" y="520" />
             </Array>
