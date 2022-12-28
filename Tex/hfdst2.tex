@@ -5,22 +5,34 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{Literature Review}
-    In this chapter we'll go over the state of the art in the field of object counting. We'll go over the techniques commonly used for counting and go in more depth about the topic of few shot object detection and why it should be applied to our problem. Finally we'll go over the metrics used to evaluate the performance of the models.
+In this chapter we will go over the state of the art in the field of object counting. We will go over the techniques commonly used for counting and go in more depth about the topic of few shot object detection and why it should be applied to our problem. Finally we will discuss the metrics used to evaluate the performance of the models.
 
-\section{Counting}
-    Counting networks are quite an established concept in machine learning as numerous papers tackle the issue of counting humans, cars, animals or cells. What those have in common is that they only encompass a small set of possible categories to count and that, as they have a large real life use, large annotated datasets exist for these problems like ShanghaiTech and COWC. The problem we're trying to solve is a bit different as we want to count a large set of objects and we don't have a large dataset to train on. 
-    
-    The methodology behind counting networks has two big streams. The first one applies a detection method to the image and then counts the number of detected objects. Many different detection methods can be used, from looking for characteristic features to matching the shape of the objects. The second one gives up on looking for an exact answer as it's too hard, with imperfect or low resolution images, and instead tries to estimate the number of objects in the image.
+\section{(Crowd) Counting}
+Counting networks are quite an established concept in machine learning as numerous papers tackle the issue of counting humans, cars, animals or cells. What those have in common is that they only encompass a small set of possible categories to count and that, as they have a large real life use, large annotated datasets exist for these problems like ShanghaiTech and COWC. The problem we're trying to solve is a bit different as we want to count a large set of objects and we don't have a large dataset to train on.
+
+The methodology behind counting networks has three big streams. The first one applies a detection method to the image and then counts the number of detected objects. Many different detection methods can be used, from looking for characteristic features to matching the shape of the objects. The second one takes a more global approach by first extracting features, textures, gradients and other information from the image as a whole and then using those to count the objects. The third method is not used on static images, but video. It assumes that the objects are moving in clusters and uses that to predict the movement of the objects and improve detection.
+
+Out of those three methods, the second one is not applicable to our problem as the object we're trying to count are sparse and the third one is not applicable to our problem as we are trying to detect unmoving objects in a still image. The first method is thus the best option for our problem, but it still has a problem. Detection networks are trained on large datasets with a lot of images of the same object. This allows the model to learn the characteristics of the object and to detect it in a new image. As we don't have a large dataset, we can't use this method. We will have to use a different method to train our model, one that doesn't require a large dataset. This is where few shot object detection comes in. It allows us to train a model on a small dataset and still use it to detect objects in a new image.
 
 %https://www.mdpi.com/1424-8220/22/14/5286
 
 %https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/papers/Ranjan_Vicinal_Counting_Networks_CVPRW_2022_paper.pdf
 
-    
-    
+\section{Few-shot object detection}
+%https://arxiv.org/abs/2112.11699
+Few-shot object detection is a technique that has been gaining popularity in the last few years. It allow you to train a model on a small dataset, which is useful in scenarios where it isn't plausible to get a large dataset to train due to the cost or the time it would take to get it. The idea behind few-shot is as follows, if a human can recognize an object after seeing it a few times, then a machine should be able to do the same. A human achieves this because they have seen many types of objects and can use that knowledge to extract significant features of new object. In essence few-shot learning does the same. It relies on a large dataset of (similar) objects and then applies the knowledge gained from that to a new object, with fewer examples.
+
+Practically this can be done in two different ways. The first way is taking a pre-trained model and transfer learning to finetune it on the new small dataset. The second way is meta learning, where the model learns to learn. This means that the model will learn how it should learn to recognize new objects from a large dataset to then apply that to the small dataset. Both of these methods have their characteristics, which we will go over in the next section.
+
+\subsection{Transfer learning}
+Transfer learning is a technique that has been used for a long time in machine learning. It allows you to use a model that has been trained on a large dataset as a base and finetune it on a new dataset. The training pipeline for this method is simple, as it works by freezing part of the base model and finetuning it on the new dataset. 
+
+\subsection{Meta learning}
+Meta learning is a more recent technique in few-shot detection. The idea behind meta learning is that the model learns how to learn to detect new objects. For meta learning there are two options, single branch and dual branch meta learning. As dual branch meta learning is generally more effective, we will focus on that. Dual branch meta learning trains using two branches, a query branch and a support branch. The query branch contains full sized images, while the support set contains cropped images of a single labeled object. Both branches try to extract relevant features from their respective images with a shared backbone. The query branch then uses the features extracted from the support branch to detect the object in the query image. The loss is then propagated back through the backbone. This allows the model to learn how to learn to detect new objects.
+
 \section{Proposed approach}
-    In this section we'll go into more detail about the approach we'll be taking.
-    This will include a number of subsections, each describing a different aspect of the approach.
-    \subsection{Few-shot}
+In this section we'll go into more detail about the approach we'll be taking.
+This will include a number of subsections, each describing a different aspect of the approach.
+\subsection{Few-shot}
 
 

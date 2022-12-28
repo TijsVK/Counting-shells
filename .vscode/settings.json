@@ -2,7 +2,12 @@
     "cSpell.words": [
         "COWC",
         "helpdesk",
+        "Obsidentify",
         "unscalable",
         "VLIZ"
-    ]
+    ],
+    "[latex]": {
+        "editor.defaultFormatter": "nickfode.latex-formatter"
+    },
+    "editor.defaultFormatter": ""
 }
