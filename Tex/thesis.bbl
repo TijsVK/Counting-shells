@@ -1,0 +1,125 @@
+\begin{thebibliography}{16}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Biederman(1987)]{biederman1987recognition}
+Irving Biederman.
+\newblock Recognition-by-components: a theory of human image understanding.
+\newblock \emph{Psychological review}, 94\penalty0 (2):\penalty0 115--147,
+  1987.
+\newblock URL \url{https://doi.org/10.1037/0033-295X.94.2.115}.
+
+\bibitem[Chang et~al.(2008)Chang, Ratinov, Roth, and Srikumar]{aaai08-132}
+M-W Chang, L~Ratinov, D~Roth, and V~Srikumar.
+\newblock Importance of semantic representation: Dataless classification.
+\newblock \emph{Importance of semantic representation: Dataless
+  classification}, 2008.
+\newblock URL \url{https://www.aaai.org/Library/AAAI/2008/aaai08-132.php}.
+
+\bibitem[Chen et~al.(2018)Chen, Wang, Wang, and Qiao]{LSTD}
+Hao Chen, Yali Wang, Guoyou Wang, and Yu~Qiao.
+\newblock {LSTD:} {A} low-shot transfer detector for object detection.
+\newblock \emph{CoRR}, abs/1803.01529, 2018.
+\newblock URL \url{http://arxiv.org/abs/1803.01529}.
+
+\bibitem[Fan et~al.(2021)Fan, Ma, Li, and
+  Sun]{DBLP:journals/corr/abs-2105-09491}
+Zhibo Fan, Yuchen Ma, Zeming Li, and Jian Sun.
+\newblock Generalized few-shot object detection without forgetting.
+\newblock \emph{CoRR}, abs/2105.09491, 2021.
+\newblock URL \url{https://arxiv.org/abs/2105.09491}.
+
+\bibitem[Girshick(2015)]{fastrcnn}
+Ross~B. Girshick.
+\newblock Fast {R-CNN}.
+\newblock \emph{CoRR}, abs/1504.08083, 2015.
+\newblock URL \url{http://arxiv.org/abs/1504.08083}.
+
+\bibitem[Hassen et~al.(2022)Hassen, Machado, and Tavares]{s22145286}
+Khouloud Ben~Ali Hassen, José J.~M. Machado, and João Manuel R.~S. Tavares.
+\newblock Convolutional neural networks and heuristic methods for crowd
+  counting: A systematic review.
+\newblock \emph{Sensors}, 22\penalty0 (14), 2022.
+\newblock ISSN 1424-8220.
+\newblock \doi{10.3390/s22145286}.
+\newblock URL \url{https://www.mdpi.com/1424-8220/22/14/5286}.
+
+\bibitem[He et~al.(2017)He, Gkioxari, Doll{\'{a}}r, and Girshick]{maskrcnn}
+Kaiming He, Georgia Gkioxari, Piotr Doll{\'{a}}r, and Ross~B. Girshick.
+\newblock Mask {R-CNN}.
+\newblock \emph{CoRR}, abs/1703.06870, 2017.
+\newblock URL \url{http://arxiv.org/abs/1703.06870}.
+
+\bibitem[K{\"{o}}hler et~al.(2021)K{\"{o}}hler, Eisenbach, and
+  Gross]{few-shot-comprehensive-survey}
+Mona K{\"{o}}hler, Markus Eisenbach, and Horst{-}Michael Gross.
+\newblock Few-shot object detection: {A} survey.
+\newblock \emph{CoRR}, abs/2112.11699, 2021.
+\newblock URL \url{https://arxiv.org/abs/2112.11699}.
+
+\bibitem[Qiao et~al.(2021)Qiao, Zhao, Li, Qiu, Wu, and Zhang]{DeFRCN}
+Limeng Qiao, Yuxuan Zhao, Zhiyuan Li, Xi~Qiu, Jianan Wu, and Chi Zhang.
+\newblock Defrcn: Decoupled faster {R-CNN} for few-shot object detection.
+\newblock \emph{CoRR}, abs/2108.09017, 2021.
+\newblock URL \url{https://arxiv.org/abs/2108.09017}.
+
+\bibitem[Ren et~al.(2015)Ren, He, Girshick, and Sun]{fasterrcnn}
+Shaoqing Ren, Kaiming He, Ross~B. Girshick, and Jian Sun.
+\newblock Faster {R-CNN:} towards real-time object detection with region
+  proposal networks.
+\newblock \emph{CoRR}, abs/1506.01497, 2015.
+\newblock URL \url{http://arxiv.org/abs/1506.01497}.
+
+\bibitem[Sun et~al.(2021)Sun, Li, Cai, Yuan, and
+  Zhang]{DBLP:journals/corr/abs-2103-05950}
+Bo~Sun, Banghuai Li, Shengcai Cai, Ye~Yuan, and Chi Zhang.
+\newblock {FSCE:} few-shot object detection via contrastive proposal encoding.
+\newblock \emph{CoRR}, abs/2103.05950, 2021.
+\newblock URL \url{https://arxiv.org/abs/2103.05950}.
+
+\bibitem[Vu et~al.(2022)Vu, Nguyen, Nguyen, Nguyen, Ngo, Do, and
+  Nguyen]{VU2022104398}
+Anh-Khoa~Nguyen Vu, Nhat-Duy Nguyen, Khanh-Duy Nguyen, Vinh-Tiep Nguyen,
+  Thanh~Duc Ngo, Thanh-Toan Do, and Tam~V. Nguyen.
+\newblock Few-shot object detection via baby learning.
+\newblock \emph{Image and Vision Computing}, 120:\penalty0 104398, 2022.
+\newblock ISSN 0262-8856.
+\newblock \doi{https://doi.org/10.1016/j.imavis.2022.104398}.
+\newblock URL
+  \url{https://www.sciencedirect.com/science/article/pii/S0262885622000270}.
+
+\bibitem[Wang et~al.(2022)Wang, Xu, Liu, and Li]{rs14143255}
+Yan Wang, Chaofei Xu, Cuiwei Liu, and Zhaokui Li.
+\newblock Context information refinement for few-shot object detection in
+  remote sensing images.
+\newblock \emph{Remote Sensing}, 14\penalty0 (14), 2022.
+\newblock ISSN 2072-4292.
+\newblock \doi{10.3390/rs14143255}.
+\newblock URL \url{https://www.mdpi.com/2072-4292/14/14/3255}.
+
+\bibitem[Yan et~al.(2019)Yan, Chen, Xu, Wang, Liang, and Lin]{meta-rcnn}
+Xiaopeng Yan, Ziliang Chen, Anni Xu, Xiaoxi Wang, Xiaodan Liang, and Liang Lin.
+\newblock Meta {R-CNN} : Towards general solver for instance-level low-shot
+  learning.
+\newblock \emph{CoRR}, abs/1909.13032, 2019.
+\newblock URL \url{http://arxiv.org/abs/1909.13032}.
+
+\bibitem[Zhang et~al.(2022)Zhang, Luo, Cui, Lu, and Xing]{MetaDETR}
+Gongjie Zhang, Zhipeng Luo, Kaiwen Cui, Shijian Lu, and Eric~P. Xing.
+\newblock Meta-detr: Image-level few-shot detection with inter-class
+  correlation exploitation.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, pages 1--12, 2022.
+\newblock \doi{10.1109/TPAMI.2022.3195735}.
+
+\bibitem[Zhang et~al.(2020)Zhang, Wang, and
+  Forsyth]{DBLP:journals/corr/abs-2011-10142}
+Weilin Zhang, Yu{-}Xiong Wang, and David~A. Forsyth.
+\newblock Cooperating rpn's improve few-shot object detection.
+\newblock \emph{CoRR}, abs/2011.10142, 2020.
+\newblock URL \url{https://arxiv.org/abs/2011.10142}.
+
+\end{thebibliography}

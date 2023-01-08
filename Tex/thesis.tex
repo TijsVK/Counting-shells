@@ -13,9 +13,10 @@
 \usepackage{graphicx}
 %\usepackage[latin1]{inputenc}           % om niet ascii karakters rechtstreeks te kunnen inputten
 \usepackage[utf8]{inputenc}            % commentarieer deze regel uit als je utf8 encoded files gebruikt in plaats van latin1
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \usepackage{listings}             		% voor het weergeven van broncode
 \usepackage{verbatim}					% weergeven van code, commando's, ...
+%\usepackage[hidelinks]{hyperref}		% maak PDF van de thesis navigeerbaar without boxes
 \usepackage{hyperref}					% maak PDF van de thesis navigeerbaar
 \usepackage{url}						% URL's invoegen in tekst met behulp van \url{http://}
 \usepackage[small,bf,hang]{caption}     % om de captions wat te verbeteren
@@ -24,6 +25,12 @@
 \usepackage{lipsum}
 \usepackage{sectsty}					% aanpassen van de fonts van sections en chapters
 %\usepackage[nottoc,numbib]{tocbibind}	% Bibliography mee in de ToC
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{standalone}
+\usepackage{enumitem}
+\setlist{nosep}
+%\usetikzlibrary{external}
 
 \allsectionsfont{\sffamily}
 \chapterfont{\raggedleft\sffamily}
@@ -33,8 +40,8 @@
 %\usepackage[times]{quotchap}           % indien je fancy hoofdstuktitels wil
 %\usepackage[none]{hyphenat}
 %\usepackage{latexsym}
-%\usepackage{amsmath}
-%\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 % MFA: zet zoekpad voor figure
 \graphicspath{{fig/}}
@@ -87,8 +94,8 @@
 \promotorA[Promotor]{Prof. dr. Toon Goedemé}
 
 \begin{document}
-%\selectlanguage{dutch} %due to incompatible syntax with the english style library and the extended features of the dutch library, I'll be modifying the dutch library to be english
-\selectlanguage{english} % For the english version
+%\selectlanguage{dutch} %due to incompatible syntax with the English style library and the extended features of the dutch library, I'll be modifying the dutch library to be English
+\selectlanguage{english} % For the English version
 \preface
 
 \input{hfdst1}
@@ -100,8 +107,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Indien je ook de niet geciteerde werken in je bibliografie wil opnemen, commentarieer dan onderstaande regel uit!
 %\nocite{*}
-\bibliographystyle{apalike}
-%\bibliography{bibliografie}
+\bibliographystyle{plainnat}
+\bibliography{bibliografie}
 
 % Eventueel enkele appendices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -110,14 +117,14 @@
 
 % Back cover: change according to the correct campus
 %\includepdf{private/back_fiiw_denayer.pdf}
-\includepdf{private/back_fiiw_denayer_eng.pdf} % For the english version
+\includepdf{private/back_fiiw_denayer_eng.pdf} % For the English version
 %\includepdf{private/back_fiiw_geel.pdf}
-% \includepdf{private/back_fiiw_geel_eng.pdf} % For the english version
+% \includepdf{private/back_fiiw_geel_eng.pdf} % For the English version
 %\includepdf{private/back_fiiw_gent.pdf}
-% \includepdf{private/back_fiiw_ghent_eng.pdf} % For the english version
+% \includepdf{private/back_fiiw_ghent_eng.pdf} % For the English version
 %\includepdf{private/back_fiiw_brugge.pdf}
-% \includepdf{private/back_fiiw_bruges_eng.pdf} % For the english version
+% \includepdf{private/back_fiiw_bruges_eng.pdf} % For the English version
 %\includepdf{private/back_fiiw_groept.pdf}
-% \includepdf{private/back_fiiw_groupt_eng.pdf} % For the english version
+% \includepdf{private/back_fiiw_groupt_eng.pdf} % For the English version
 
 \end{document}

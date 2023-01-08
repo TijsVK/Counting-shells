@@ -1,13 +1,28 @@
 {
     "cSpell.words": [
+        "convolutional",
         "COWC",
+        "DETR",
+        "finetune",
+        "finetunes",
+        "FRCN",
         "helpdesk",
+        "LSTD",
         "Obsidentify",
+        "overfitting",
+        "pretraining",
+        "RCNN",
         "unscalable",
         "VLIZ"
     ],
     "[latex]": {
         "editor.defaultFormatter": "nickfode.latex-formatter"
     },
-    "editor.defaultFormatter": ""
+    "editor.defaultFormatter": "",
+    "grammarly.selectors": [
+        {
+            "language": "latex",
+            "scheme": "file"
+        }
+    ]
 }
