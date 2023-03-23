@@ -33,17 +33,18 @@ Different approaches to few-shot learning vary on a few characteristics
 
 In this section, we will go over the different options for each of these characteristics.
 
-\subsection{Architecture}
+\subsection{Method}
 
-For the architecture there are two options, transfer learning and meta-learning. Each of these has its own advantages and disadvantages.
+For the method there are two options, transfer learning and meta-learning. Each of these has its own advantages and disadvantages. %add metric learning and data augmentation
 
 \subsubsection*{Transfer learning}
 
-Transfer learning is a technique that has been used for a long time in machine learning. It allows us to use a model that has been trained on a large dataset as a base and, with a few changes to mitigate the small size of the novel dataset in few-shot learning, finetune (the last layers) on a novel dataset. The advantages of this method are that it is relatively easy to implement and it is fast. The problem with this method is that, because of the small size of the novel dataset, the Region proposal network (RPN) can not be properly trained and can sometimes completely miss the novel object classes. Mitigations for this problem do, however, exist. \cite{DBLP:journals/corr/abs-2011-10142, VU2022104398, DBLP:journals/corr/abs-2105-09491, DBLP:journals/corr/abs-2103-05950,rs14143255}.
+Transfer learning is a technique that has been used for a long time in machine learning. It allows us to use a model that has been trained on a large dataset as a base and, with a few changes to mitigate the small size of the novel dataset in few-shot learning, finetune (the last layers) on a novel dataset. The advantages of this method are that it is relatively easy to implement and it is fast. One of the problems with this method is that, because of the small size of the novel dataset, the Region proposal network (RPN) can not be properly trained and can sometimes completely miss the novel object classes. Mitigations for this problem do, however, exist. \cite{DBLP:journals/corr/abs-2011-10142, VU2022104398, DBLP:journals/corr/abs-2105-09491, DBLP:journals/corr/abs-2103-05950,rs14143255}.
 
 \subsubsection*{Meta-learning}
 
-Meta-learning learns on a higher order of abstraction. Instead of learning how to detect objects it learns how to learn to detect objects. It does this with the help of a large dataset, by learning how to best extract and differentiate the features of its classes. Due to the dataset being large, this can then be applied to a novel dataset. It is best if the novel dataset is similar to the large dataset, as it will be able to generalize better. Practically meta-learning is most commonly done by introducing a support branch\cite{few-shot-comprehensive-survey}, displayed in figure \ref{fig:2_dualbranchmeta}. The advantages of this method are that it is better at the correct detection of alike novel classes due to the meta loss. The disadvantages are its complexity and that it is slower to train than transfer learning due to the support branch. As the support branch is computed once after training, it is not significantly slower during inference.
+Meta-learning learns on a higher order of abstraction. Instead of learning how to detect objects it learns how to learn to detect objects. It does this with the help of a large dataset, by learning how to best extract and differentiate the features of its classes. Due to the dataset being large, this can then be applied to a novel dataset. It is best if the novel dataset is similar to the large dataset, as it will be able to generalize better. Practically meta-learning is most commonly done by introducing a support branch\cite{few-shot-comprehensive-survey}, displayed in figure \ref{fig:2_dualbranchmeta}. An advantage of this method is that it is better at the detection of alike novel classes due to the meta loss, a loss function on the support branch. %needs citation
+The disadvantages are its complexity and that it is slower to train than transfer learning due to the aforementioned support branch. As the support branch is computed once after training, it is not significantly slower during inference.
 %needs sauces
 
 \begin{figure}[H]
@@ -54,7 +55,12 @@ Meta-learning learns on a higher order of abstraction. Instead of learning how t
 
 \subsection{Data}
 
-The amount and type of data used in few-shot learning is also an important factor. A common way to describe a few shot task is "N-Way, K-Shot". Where N is the number of classes and K is the number of examples per class. The more examples we have per class, the easier it is to learn of course. The larger the number of classes the more crowded our feature space becomes, making it harder to learn. Models are often benchmarked with increasing K to see how they perform, values of K are often set at (2,) 5, 10 and 30. When the amount of images decreases even more we enter a whole new category of few-shot learning, one-shot learning and zero-shot learning.
+The amount and type of data used in few-shot learning is also an important factor. A common way to describe a few shot task is "N-Way, K-Shot". Where N is the number of classes and K is the number of examples per class. The more examples we have per class, the easier it is to learn. The larger the number of classes the harder. Models are often benchmarked with increasing K to see how they perform with values of K often set at (2,) 5, 10 and 30. When the amount of images decreases even further we enter a whole new category of few-shot learning, one-shot learning and zero-shot learning(which is out of scope for this paper). Also important is the type of data used. The three ways a model can learn are supervised, semi-supervised and unsupervised. Respectively working with a fully annotated dataset, a partially annotated dataset and an unannotated dataset.
+
+\subsubsection*{One-shot learning}
+
+While one-shot learning is not a new concept, applying it to object detection is hard. Early applications used a siamese backbone, as is often seen in other one-shot applications, but this was not very successful \citep{One-shot-siamese}. Recently however OWL-ViT\citep{owlvit} improved one-shot object detection by a large margin. It first uses a large dataset of web-derived image-text pairings to pre-train a vision and a text encoder. The model is then modified to enable detection and Open-vocabulary classification. Lastly, it is finetuned for detection. The model can take a text or image-derived embedding and find matching objects in the query image. As the model can take image input it can be used for one-shot object detection. It reaches 41.8 mAP for one-shot object detection on the COCO dataset. %to sota?
+
 
 \section{Metrics}
 In machine learning, it is important to test the model after training, to evaluate its performance. To test the model's accuracy a part of the initial dataset is split off into a test set and never used when training. As we have the ground truth for the test set we can compare it with the network output to find if the detections are correct. 

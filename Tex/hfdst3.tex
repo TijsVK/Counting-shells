@@ -8,4 +8,14 @@
 In this chapter, we will discuss the implementation of the network. We will first discuss the dataset and network architecture we will be using. We will then go into detail about the implementation of the network and the training process. 
 
 \section{Dataset}
-Firstly we will use a dataset for object detection and counting to establish a baseline for our model. Secondly, we will use a small dataset of shells to train our model to count shells.
+In this section, we will go over the datasets used in this paper, with a focus on the shell dataset we are introducing ourselves. With this information, we can better choose candidate models for our task.
+
+\subsection{COCO}
+
+Microsoft's Common Objects in Context (COCO) dataset is a large-scale object detection and segmentation dataset. It contains 330K images with 1.5M instance annotations of 80 different classes. It is split into a training set of 118K images, a validation set of 5K images and a test set of 40K images(the other images are unlabeled). \citet{COCO}
+
+\subsection{Shells}
+
+The shell dataset is a new dataset we are introducing ourselves. As of this writing, it contains 300 images of shells, with 0 annotations. The images shot taken with a cellphone camera on the Belgian coast. Depending on the chosen model, either all images will be annotated or the dataset can be expanded with more images.
+
+This section will be expanded on in the future when annotations are made and the dataset is possibly expanded.
