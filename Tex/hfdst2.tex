@@ -35,11 +35,11 @@ In this section, we will go over the different options for each of these charact
 
 \subsection{Method}
 
-For the method there are two options, transfer learning and meta-learning. Each of these has its own advantages and disadvantages. %add metric learning and data augmentation
+There are two different methodologies that can be applied to few-shot learning, transfer learning and meta-learning. Each of these has its own advantages and disadvantages. %add metric learning and data augmentation
 
 \subsubsection*{Transfer learning}
 
-Transfer learning is a technique that has been used for a long time in machine learning. It allows us to use a model that has been trained on a large dataset as a base and, with a few changes to mitigate the small size of the novel dataset in few-shot learning, finetune (the last layers) on a novel dataset. The advantages of this method are that it is relatively easy to implement and it is fast. One of the problems with this method is that, because of the small size of the novel dataset, the Region proposal network (RPN) can not be properly trained and can sometimes completely miss the novel object classes. Mitigations for this problem do, however, exist. \cite{DBLP:journals/corr/abs-2011-10142, VU2022104398, DBLP:journals/corr/abs-2105-09491, DBLP:journals/corr/abs-2103-05950,rs14143255}.
+Transfer learning is a technique that has been used for a long time in machine learning. It allows us to use a model that has been trained on a large dataset as a base and, with a few changes to mitigate the small size of the novel dataset in few-shot learning, finetune (the last layers) on a novel dataset. The advantages of this method are that it is relatively easy to implement and it is fast. One of the problems with this method is that, because of the small size of the novel dataset, the Region proposal network (RPN), which provides class-agnostic bounding boxes, can not be properly trained and can sometimes completely miss the novel object classes. Mitigations for this problem do, however, exist. \cite{DBLP:journals/corr/abs-2011-10142, VU2022104398, DBLP:journals/corr/abs-2105-09491, DBLP:journals/corr/abs-2103-05950,rs14143255}.
 
 \subsubsection*{Meta-learning}
 
@@ -55,11 +55,11 @@ The disadvantages are its complexity and that it is slower to train than transfe
 
 \subsection{Data}
 
-The amount and type of data used in few-shot learning is also an important factor. A common way to describe a few shot task is "N-Way, K-Shot". Where N is the number of classes and K is the number of examples per class. The more examples we have per class, the easier it is to learn. The larger the number of classes the harder. Models are often benchmarked with increasing K to see how they perform with values of K often set at (2,) 5, 10 and 30. When the amount of images decreases even further we enter a whole new category of few-shot learning, one-shot learning and zero-shot learning(which is out of scope for this paper). Also important is the type of data used. The three ways a model can learn are supervised, semi-supervised and unsupervised. Respectively working with a fully annotated dataset, a partially annotated dataset and an unannotated dataset.
+The amount and type of data used in few-shot learning is also an important factor. A common way to describe a few shot task is "N-Way, K-Shot". Where N is the number of classes and K is the number of examples per class. The more examples we have per class, the easier it is to learn. The larger the number of classes the harder. Models are often benchmarked with increasing K to see how they perform with values of K often set at (2,) 5, 10 and 30. When the amount of images decreases even further we enter a whole new category of few-shot learning, one-shot learning and zero-shot learning. Finally, the requirements for the type of annotations on the data can vary depending on the training method used. Supervised requires a fully annotated dataset, semi-supervised a partially annotated dataset and unsupervised doesn't need labels at all.
 
 \subsubsection*{One-shot learning}
 
-While one-shot learning is not a new concept, applying it to object detection is hard. Early applications used a siamese backbone, as is often seen in other one-shot applications, but this was not very successful \citep{One-shot-siamese}. Recently however OWL-ViT\citep{owlvit} improved one-shot object detection by a large margin. It first uses a large dataset of web-derived image-text pairings to pre-train a vision and a text encoder. The model is then modified to enable detection and Open-vocabulary classification. Lastly, it is finetuned for detection. The model can take a text or image-derived embedding and find matching objects in the query image. As the model can take image input it can be used for one-shot object detection. It reaches 41.8 mAP for one-shot object detection on the COCO dataset. %to sota?
+While one-shot learning is not a new concept, applying it to object detection is hard. Early applications used a siamese backbone, as is often seen in other one-shot applications, but this was not very successful \citep{One-shot-siamese}. However, recently OWL-ViT \citep{owlvit} improved one-shot object detection by a large margin, reaching 41.8 mAP for one-shot object detection on the COCO dataset.
 
 
 \section{Metrics}
@@ -106,71 +106,67 @@ The threshold between high and low confidence can be chosen, a high threshold wi
 Averaging the precision across all recall levels results in the average precision (AP) metric. Averaging the AP over all classes results in the mean average precision (mAP) metric. The mAP is the most common metric used to evaluate object detection models.
 
 \section{State of the art}
-In this section, we will go over the state of the art in few-shot object detection with both transfer learning and meta-learning.
-\subsection{Transfer learning}
-Transfer learning, as previously discussed, takes a model trained on a large dataset and finetunes it on a novel dataset. In this section, we will go over the state of the art in few-shot object detection with transfer learning.
+In this section, we will go over the state of the art in few-shot object detection with a focus on the previously discussed methods and types of data.
 
-\subsubsection{A Low-Shot Transfer Detector for Object Detection(\citet{LSTD})}
-\citet{LSTD} proposes a new architecture, designed to mitigate transfer learning difficulties in few-shot detection by combining Single Shot Detector (SSD) and Faster R-CNN into Low-Shot Transfer Detector (LSTD). The LSTD architecture is shown in figure \ref{fig:2_LSTD}. In LSTD bounding box regression is first performed according to SSD. The advantage of using SSD is that all classes share a single bounding box regressor, making it suitable for pretraining on a large dataset. The object detection is performed according to a modified Faster R-CNN. Faster R-CNN is modified, replacing the fully connected layers with two convolutional layers, to reduce overfitting.
+%Oneshot learning: https://arxiv.org/pdf/2205.06230v2.pdf
+\subsection*{Simple Open-Vocabulary Object Detection
+with Vision Transformers. (\citet{owlvit})}
 
-On the ImageNet2015 dataset, it outperforms Faster R-CNN and SSD. On the VOC2007 and the VOC2010 dataset, it outperforms weakly and semi-supervised object detection methods when the number of training images is above 1. Note that both the weakly and the semi-supervised approaches require the full training set, so LSTD outperforms them with merely 0.4\% training data.
+\citet{owlvit} introduce a new method, Vision Transformer for Open-World Localization, or OWL-ViT. It uses recent developments in language encoders and contrastive image-text training, using both positive and negative examples of image-text pairs to divide the feature space. These models are trained on loosely matched image-text pairs, which can be abundantly found on the internet. They start from the Vision Transformer (ViT) architecture and pre-train it on a large dataset of these image-text pairs. The token pooling layer downsamples the output embeddings to optimize computation, for open-vocabulary detection this does not work, however. The token pooling layer is thus replaced with a set of lightweight classification and box heads at each output token. The classification head does a linear projection, while the box head is a simple MLP with one hidden layer with a gelu activation function. The whole model (both text and image encoders) is then finetuned on standard object detection datasets. It is then ready to be used for one-shot object detection as it can take text, but also image-derived embeddings to find matching objects in the query image.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{2_LSTD_simple.jpg}
-	\caption{\label{fig:2_LSTD} LSTD architecture. Image from \citet{LSTD}.}
-\end{figure}
+Special characteristic: 1-Shot-N-Way without retraining.
 
-\subsubsection{DeFRCN: Decoupled Faster R-CNN for Few-Shot Object Detection (\citet{DeFRCN})}
-\citet{DeFRCN} extends Faster R-CNN\cite{fasterrcnn} by introducing Gradient Decoupled Layers (GDL) and Prototypical Calibration Block to create Decoupled Faster R-CNN (DeFRCN). The DeFRCN architecture is shown in figure \ref{fig:2_DeFRCN}.
+Results: 41.8 AP50 on COCO one-shot object detection.
 
-During forward propagation, the GDLs apply an affine transformation layer to enhance feature representation and perform forward decoupling. During backward propagation, the GDL takes the gradient from the subsequent layer, multiplies it with a constant and passes it to the preceding layer. This reduction ensures that the update speed of the backbone is slower than the update speed of the connected network, this prevents overfitting due to the small dataset. In practice, the gradient between the backbone and the RPN is set to 0 as the RPN is largely class-agnostic, and the gradient between the RPN and the RCNN Head is set to 0.75 during base training and 0.01 during fine-tuning.
-
-The Prototypical Calibration Block (PCB) is a metric-based score refinement module. It aims to eliminate high-scored false positives and remedy low-scored massing samples. It consists of a strong classifier from an ImageNet pre-trained model, an RoI-align layer and a prototype bank. In practice it first extracts the original image feature maps, it then employs RoI-align with ground-truth boxes to produce instance representations. Based on these features the support set is shrunk to a prototype bank. When given an object proposal from the fine-tuned few-shot detector, it first performs RoI-align on the predicted box to generate the object features. It then calculates the cosine similarity between the object features and the prototype bank. Finally, a weighted aggregation between the original score and the cosine similarity is performed. The weight is fixed to 0.5 in practice, resulting in equal weight between the original score and the cosine similarity. As the PCB module is offline and does not require any additional training, it can be easily integrated into any existing object detection framework.
-
-On both COCO and VOC datasets, DeFRCN outperforms the state of the art in all but one combination of novel classes and training images.
+Notes: The performance of OWL-ViT has to be tested to see how well it performs on our shell dataset as the pretraining likely doesn't cover this area well. If it works well on a one-shot test, we could finetune it further on our dataset.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\textwidth]{2_DeFRCN.jpg}
-	\caption{\label{fig:2_DeFRCN} DeFRCN architecture. Image from \citet{DeFRCN}.}
+	\includegraphics[width=1\textwidth]{2_owlvit.png}
+	\caption{\label{fig:2_owl-vitr} Original ViT to OWL-ViT. Image from \citet{owlvit}.}
 \end{figure}
 
-\subsection{Meta-learning}
-Meta-learning is a learning paradigm that aims to learn how to learn. It is a form of transfer learning that learns to transfer knowledge from one task to another. In this section, we will go over the state of the art in few-shot object detection with meta-learning.
+%K-shot(10), DETR, transfer learning, unsupervised: https://arxiv.org/pdf/2106.04550v4.pdf
 
-\subsubsection{Meta R-CNN: Towards General Solver for Instance-level Low-shot Learning (\citet{meta-rcnn})}
-\citet{meta-rcnn} proposes a meta-learning approach to few-shot object detection. It extends
-Faster /Mask R-CNN\cite{maskrcnn} by introducing a Predictor-head Remodeling Network (PRN). PRN receives few-shot objects drawn from base and novel classes with their bounding boxes or masks, inferring class-attentive vectors corresponding to the classes that few-shot input objects belong to. These class-attentive vectors are then applied to take channel-wise attention on each RoI feature map, after which a binary detection outcome is predicted. The PRN architecture is shown in figure \ref{fig:2_metarcnn}.
+
+
+%K-shot(30), ViT, transfer learning from self-supervised, fully-supervised: https://arxiv.org/pdf/2205.09613v2.pdf
+\subsection*{Integrally Migrating Pre-trained Transformer Encoder-decoders
+for Visual Object Detection. (\citet{imTED})}
+
+\citet{imTED} extend the ViT architecture by making full use of the transformer encoder-decoder instead of merely using the encoder as its backbone, as many other methods do. Whereas other methods use the encoder as their backbone and initialize the FPN, RPN and detector head from scratch, imTED instead uses the decoder as its detector head. As such the only parts that need to be trained are the FPN, RPN and output layers of the FPN and decoder. This reduces the number of parameters that are randomly initialized by 81.3\%.
+
+Results: SOTA on COCO 30-shot object detection with 30.2 AP.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{2_metarcnn.jpg}
-	\caption{\label{fig:2_metarcnn} Meta R-CNN architecture with PRN. Image from \citet{meta-rcnn}.}
+	\includegraphics[width=1\textwidth]{2_imTED_full}
+	\caption{\label{fig:2_imTED_full} imTED architecture. Image from \citet{imTED}.}
 \end{figure}
 
-\subsubsection{Meta-DETR: Image-Level Few-Shot Detection with Inter-Class Correlation Exploitation (\citet{MetaDETR})}
-\citet{MetaDETR} proposes the first few shot object detector to work on the image level, shown in \ref{fig:2_imagelevelprediction}. It extends Deformable DETR with a Correlational Aggregation Network (CAN) to create Meta-DETR, shown in figure \ref{fig:2_metadetr}. The CAN architecture is shown in figure \ref{fig:2_CAN}. 
+%K-shot, Faster R-CNN, meta-learning: https://arxiv.org/pdf/2208.07039v3.pdf
+\subsection*{Hierarchical Attention Network for Few-Shot
+Object Detection via Meta-Contrastive Learning. (\citet{hANMCL})}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.4\textwidth]{2_imagelevelprediction.jpg}
-    \caption{\label{fig:2_imagelevelprediction} Image level detection. Image from \citet{MetaDETR}.}
+\citet{hANMCL} expand upon Faster R-CNN \citep{fasterrcnn} by introducing a  hierarchical attention module (HAM) and a meta-contrastive learning module (Meta-CLM). The HAM combines the robustness of global attention with the local context information of a convolutional network by first applying local attention and then applying global attention. The stages can be found in fig \ref{fig:2_hANMCL_HAM}. The Meta-CLM combines contrastive learning with meta-learning. It works on the same principles as contrastive learning, only instead of positive and negative images it uses positive and negative image pairs. Due to being metric-based, it can be used without any finetuning on novel classes.
+
+Special characteristic: As opposed to many other SOTA methods, this method does not use vision transformers.
+
+Results: 22.4 AP on COCO 10-shot object detection, 25 AP on COCO 30-shot object detection.
+
+Notes: This model can be used without finetuning for novel classes, much like OWL-ViT. Due to its small size, it can be trained on less powerful hardware. As it uses metric-based meta-learning, it shows potential for our problem of alike shells.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{2_hANMCL_HAM.png}
+	\caption{\label{fig:2_hANMCL_HAM} Detailed view of the HAM. Image from \citet{hANMCL}.}
 \end{figure}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\textwidth]{2_metadetr.jpg}
-    \caption{\label{fig:2_metadetr} Meta-DETR architecture. Image from \citet{MetaDETR}.}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{2_hANMCL.png}
+	\caption{\label{fig:2_hANMCL} Meta-contrastive learning. Image from \citet{hANMCL}.}
 \end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.4\textwidth]{2_can.jpg}
-    \caption{\label{fig:2_CAN} CAN architecture. Image from \citet{MetaDETR}.}
-\end{figure}
-
-As shown in fig \ref{fig:2_CAN} the query and support features, extracted by ResNet-101, are first processed by a weight-shared multi-head attention module, encoding them into the same embedding space. Then the prototype for each support class is obtained by applying RoIAlign, followed by average pooling on the support features to get the support prototypes. Feature and encoding matching is then performed on the support prototypes and query features. The sum of the matching scores is then fed to a feed-forward network to obtain the final output.
 
 \section{Conclusion}
 In this chapter we have studied object counting, narrowing it down to few-shot object detection to then count the detections. We went into more detail regarding the different ways to implement few-shot learning to detect objects. The sub-field of meta-learning shows the most promise for our problem as it is better at learning the difference between two alike novel classes compared to transfer learning.
