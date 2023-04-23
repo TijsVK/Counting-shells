@@ -7,17 +7,19 @@
 \chapter{Literature Review}
 In this chapter, we will review the state of the art in the field of object counting. We will study the techniques commonly used for counting and go in more depth about the topic of few-shot object detection and why it should be applied to our problem. Finally, we will discuss the metrics used to evaluate the performance of the models.
 
-\section{(Crowd) Counting}
+\section{Crowd Counting}
 Counting networks are an established concept in machine learning as numerous papers tackle the issue of counting humans, cars, animals or cells. What those have in common is that they only encompass a small set of possible categories to count and that, as they have a large real-life use, large annotated datasets exist like ShanghaiTech\cite{Shanghaitech} and COWC\cite{COWC}. The problem we are trying to solve is a bit different as we want to count a large set of objects and yet we don't have a large dataset to train on.
 
 The methodology behind heuristic counting networks has three big streams\cite{s22145286}. The first applies a detection method to the image and then counts the number of detected objects. Many different detection methods can be used, from looking for characteristic features to matching the shape of the objects. The second takes a more global approach by first extracting features, textures, gradients and other information from the image as a whole and then using those to count the objects. The third method is not used on static images, but on video. It assumes that the objects are moving in clusters and uses that to predict the movement of the objects and improve detection.
 
 Out of those three methods, the third one is not applicable to our problem as we are trying to detect unmoving objects in a still image.
-Both the first and second methods are applicable to our problem, however, both have the problem of requiring a large dataset to train on. We will have to use a method that doesn't require a large dataset, which is where few-shot learning comes in. In the domain of few-shot learning the first method, object detection, is the most common. In the next section, we will go more in-depth about few-shot object detection. %FUTURE WORK: try the second method.
+Both the first and second methods are applicable to our problem, however, both have the problem of requiring a large dataset to train on. We will have to use a method that doesn't require a large dataset, which is where few-shot learning comes in. In the domain of few-shot learning the first method, object detection, is the most common. In the next section, we will go more in-depth about few-shot object detection.
 
 %https://www.mdpi.com/1424-8220/22/14/5286
 
 %https://openaccess.thecvf.com/content/CVPR2022W/L3D-IVU/papers/Ranjan_Vicinal_Counting_Networks_CVPRW_2022_paper.pdf
+
+\section{Object detection basics}
 
 \section{Few-shot object detection}
 %https://arxiv.org/abs/2112.11699
