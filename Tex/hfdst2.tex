@@ -64,8 +64,14 @@ Faster R-CNN, shown in fig \ref{fig:2_fasterrcnn}, improves on Fast R-CNN by rep
 	\caption{\label{fig:2_fasterrcnn} Faster R-CNN architecture. Image from \citet{fasterrcnn}.}
 \end{figure}
 
-\section{Vision Transformers}
-This section will be about the workings of vision transformers
+\subsection{Vision Transformers\cite{vit}}
+In recent years, the availability of more data has led to the development of architectures that were not previously possible. One example is the transformer architecture \cite{transformers}, originally designed for natural language processing (NLP) tasks, but now also used in computer vision by \citet{vit} who call their approach Vision Transformers (ViT). ViT applies the standard transformers architecture to images with minimal changes and therefore shares most characteristics with transformers. Transformers performs best when pre-trained on large amounts of data before fine-tuning on a specific task. This is also the case for ViT, which is pre-trained on either the ImageNet-21k dataset or the JFT-300M dataset and then fine-tuned on various benchmarks, where it exceeds the CNN-based state-of-the-art. The ViT architecture is illustrated in Figure \ref{fig:2_vit}. The model starts by dividing the image into a fixed number of patches, which are linearly projected into a 1D vector. To account for the position of each patch, a position embedding is added to the input.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{2_vit.png}
+	\caption{\label{fig:2_vit} ViT architecture. Image from \citet{vit}.}
+\end{figure}
 
 \section{Few-shot object detection}
 %https://arxiv.org/abs/2112.11699
@@ -83,7 +89,7 @@ In this section, we will go over the different options for each of these charact
 
 \subsection{Method}
 
-There are two different methodologies that can be applied to few-shot learning, transfer learning and meta-learning. Each of these has its own advantages and disadvantages. %add metric learning and data augmentation
+Two different methodologies can be applied to few-shot learning, transfer learning and meta-learning. Each of these has its advantages and disadvantages. %add metric learning and data augmentation
 
 \subsubsection*{Transfer learning}
 
@@ -160,7 +166,7 @@ In this section, we will go over the state of the art in few-shot object detecti
 \subsection*{Simple Open-Vocabulary Object Detection
 with Vision Transformers. (\citet{owlvit})} \label{sec:2_owlvit}
 
-\citet{owlvit} introduce a new method, Vision Transformer for Open-World Localization, or OWL-ViT. It uses recent developments in language encoders and contrastive image-text training, using both positive and negative examples of image-text pairs to divide the feature space. These models are trained on loosely matched image-text pairs, which can be abundantly found on the internet. They start from the Vision Transformer (ViT) architecture and pre-train it on a large dataset of these image-text pairs. The token pooling layer downsamples the output embeddings to optimize computation, for open-vocabulary detection this does not work, however. The token pooling layer is thus replaced with a set of lightweight classification and box heads at each output token. The classification head does a linear projection, while the box head is a simple MLP with one hidden layer with a gelu activation function. The whole model (both text and image encoders) is then finetuned on standard object detection datasets. It is then ready to be used for one-shot object detection as it can take text, but also image-derived embeddings to find matching objects in the query image.
+\citet{owlvit} introduce a new method, Vision Transformer for Open-World Localization, or OWL-ViT. They modify ViT to make it work for object detection instead of classification. They modify ViT after pre-training by removing the token pooling layer, which downsamples the output embeddings to optimize computation, as that doesn't work for open-vocabulary detection. It is replaced with a set of lightweight classification and box heads at each output token. The classification head does a linear projection, while the box head is a simple MLP with one hidden layer with a gelu activation function. The whole model (both text and image encoders) is then finetuned on standard object detection datasets. It is then ready to be used for one-shot object detection as it can take text, but also image-derived embeddings to find matching objects in the query image.
 
 \begin{figure}[h]
 	\centering
@@ -176,7 +182,7 @@ with Vision Transformers. (\citet{owlvit})} \label{sec:2_owlvit}
 \subsection*{Integrally Migrating Pre-trained Transformer Encoder-decoders
 for Visual Object Detection. (\citet{imTED})}
 
-\citet{imTED} extend the ViT architecture by making full use of the transformer encoder-decoder instead of merely using the encoder as its backbone, as many other methods do. Whereas other methods use the encoder as their backbone and initialize the FPN, RPN and detector head from scratch, imTED instead uses the decoder as its detector head. As such the only parts that need to be trained are the FPN, RPN and output layers of the FPN and decoder. This reduces the number of parameters that are randomly initialized by 81.3\%.
+\citet{imTED} extend the ViT architecture by making full use of the transformer encoder-decoder instead of merely using the encoder as its backbone, as many other methods do. Whereas other methods use the encoder as their backbone and initialize the FPN, RPN and detector head from scratch, imTED instead uses the decoder as its detector head. As such the only parts that need to be trained are the FPN, RPN and output layers of the FPN and decoder. The final architecture is like faster RCNN, but with the encoder as the backbone and the decoder as the detector head. The number of parameters that are randomly initialized is reduced by 81.3\%.
 
 
 \begin{figure}[h]
@@ -212,15 +218,16 @@ Object Detection via Meta-Contrastive Learning. (\citet{hANMCL})}
 	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{41.8* [10 shot]}          & \multicolumn{1}{l|}{}\\ \cline{2-2}
 	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{/}              & \multicolumn{1}{l|}{}\\ \hline
 	\multicolumn{1}{|l|}{\multirow{3}{*}{imTED}}   & \multicolumn{1}{l|}{/}              & \multicolumn{1}{l|}{\multirow{3}{*}{Reduced training time/diffuculty}}\\ \cline{2-2}
-	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{22.5 [10 shot]}           & \multicolumn{1}{l|}{}\\ \cline{2-2}
-	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{30.2 [30 shot]}           & \multicolumn{1}{l|}{}\\ \hline
-	\multicolumn{1}{|l|}{\multirow{3}{*}{hANMCL}}  & \multicolumn{1}{l|}{13.4 [1 shot]}           & \multicolumn{1}{l|}{\multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}1-Shot-N-Way without retraining\\ Faster R-CNN based, so less performant hardware required\\ Meta-learning suited to divide metric space of our alike shells\end{tabular}}} \\ \cline{2-2}
-	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{22.4 [10 shot]}           & \multicolumn{1}{l|}{}\\ \cline{2-2}
-	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{25.0 [30 shot]}           & \multicolumn{1}{l|}{}\\ \hline
-	\multicolumn{3}{l}{*Results on AP50}
+	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{22.5** [10 shot]}           & \multicolumn{1}{l|}{}\\ \cline{2-2}
+	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{30.2** [30 shot]}           & \multicolumn{1}{l|}{}\\ \hline
+	\multicolumn{1}{|l|}{\multirow{3}{*}{hANMCL}}  & \multicolumn{1}{l|}{13.4** [1 shot]}           & \multicolumn{1}{l|}{\multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}1-Shot-N-Way without retraining\\ Faster R-CNN based, so less performant hardware required\\ Meta-learning suited to divide metric space of our alike shells\end{tabular}}} \\ \cline{2-2}
+	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{22.4** [10 shot]}           & \multicolumn{1}{l|}{}\\ \cline{2-2}
+	\multicolumn{1}{|l|}{}                         & \multicolumn{1}{l|}{25.0** [30 shot]}           & \multicolumn{1}{l|}{}\\ \hline
+	\multicolumn{3}{l}{*Results on AP50}\\
+	\multicolumn{3}{l}{**Results on AP COCO}
 	\end{tabular}
 \end{table}
-In this chapter we have studied object counting, narrowing it down to few-shot object detection to then count the detections. We went into more detail regarding the different ways to implement few-shot learning to detect objects. Studying the SOTA methods for few-shot object detection, we found that a wide variety of models, each with different advantages and disadvantages exist. OWL-ViT and hANMCL are capable of few-shot object detection without finetuning/retraining, thus they are a good fit to establish a baseline. In terms of viability, hANMCL is faster R-CNN-based and uses a convolutional backbone, as opposed to OWL-ViT and imTED which use ViT, a transformer based backbone. This results in lower requirements in terms of hardware. We will start with finetuning hANMCL, if we have the time and hardware to do so we will also finetune OWL-ViT and imTED.
+In this chapter we have studied object counting, narrowing it down to few-shot object detection to then count the detections. We went into more detail regarding the different ways to implement few-shot learning to detect objects. Studying the SOTA methods for few-shot object detection, we found that a wide variety of models, each with different advantages and disadvantages exist. OWL-ViT and hANMCL are capable of few-shot object detection without finetuning/retraining, thus they are a good fit to establish a baseline. In terms of viability, hANMCL is faster R-CNN-based and uses a convolutional backbone, as opposed to OWL-ViT and imTED which use ViT, an attention-based backbone. Both OWL-ViT as hANMCL can be used to initially establish a baseline as they do not require retraining. For our implementation we will start with finetuning hANMCL, if we have the time and hardware to do so we will also finetune OWL-ViT and imTED to compare the results.
 
 \section {Planning}
 4 weeks left:
