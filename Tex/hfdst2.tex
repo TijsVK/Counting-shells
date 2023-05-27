@@ -22,7 +22,7 @@ Both the first and second methods are applicable to our problem, however, both h
 \section{Object detection}
 The history of techniques used for object detection can be split into two parts: traditional methods and deep learning-based methods. Before 2012 the traditional methods were the most common, as hardware was not yet powerful enough to train deep learning models. After 2012, with hardware becoming more powerful, deep learning-based methods became more common. The deep learning-based methods can be split into two categories: single-stage and two-stage methods. Two-stage methods split the problem into two stages, first detecting the objects and then classifying them and are thus more accurate but slower than single-stage detectors. In this section, we will go over some of the major milestones in the two-stage detector branch of the deep learning part of the history of object detection as for our problem accuracy is the highest priority.
 
-\subsection{R-CNN\cite{rcnn}}
+\subsection{R-CNN \cite{rcnn}}
 R-CCN, shown in fig \ref{fig:2_rcnn}, was the first two-stage deep learning method. It obtains region proposals using a method to obtain category-independent region proposals, like selective search\cite{selectivesearch}, and then classifies those regions using a CNN. While it obtained a large improvement over the SOTA, it was quite slow as with each image it had to run the CNN on 2000 regions to extract features. Many of those 2000 would be redundant as they overlap.
 
 \begin{figure}[H]
@@ -31,7 +31,7 @@ R-CCN, shown in fig \ref{fig:2_rcnn}, was the first two-stage deep learning meth
 	\caption{\label{fig:2_rcnn} RCNN architecture. Image from \citet{rcnn}.}
 \end{figure}
 
-\subsection{SPPNet\cite{sppnet}}
+\subsection{SPPNet \cite{sppnet}}
 SPPNet, shown in fig \ref{fig:2_sppnet}, takes a different approach than R-CNN. Conventional CNN-based methods are limited by the fact that the fully connected layers at the end of the network require a fixed input size. This means that the input image has to be resized to a fixed size for each region, which leads to loss of information and/or bad representation, this can be seen in \ref{fig:2_rcnn}. SPPNet solves this problem by adding a spatial pyramid pooling layer (SPP) after the last convolutional layer, a comparison with conventional CCNs can be found in fig \ref{fig:2_sppnetvscnn}. Convolutional layers can take any size input, which is then pooled to the fixed size required for the fully connected layers by the SPP layer. As the convolutional layers are only run once per image, this greatly improves the speed of the network, reaching 20-100x speedup compared to R-CNN. The SPP layer consists of parallel max-pooling layers with differing amounts of pooling regions, which are then concatenated to form a fixed-length representation, as shown in fig \ref{fig:2_sppnet}.
 
 \begin{figure}[H]
@@ -46,7 +46,7 @@ SPPNet, shown in fig \ref{fig:2_sppnet}, takes a different approach than R-CNN. 
 	\caption{\label{fig:2_sppnetvscnn} Conventional CNN vs SPPNet. Image from \citet{sppnet}.}
 \end{figure}
 
-\subsection{Fast R-CNN\cite{fastrcnn}}
+\subsection{Fast R-CNN \cite{fastrcnn}}
 Fast R-CNN, shown in fig \ref{fig:2_fastrcnn}, combines the region proposals of R-CNN with the method of SPPNet. It runs the CNN on the whole image and then applies max pooling for each region proposal, they call this region of interest pooling (RoI pooling). The RoI layer is a special case of the SPP layer, the case where the number of pooling regions is 1. As the time-consuming CNN is only run once per image, the training and inference time is greatly improved, while the RoI pooling layer increases the accuracy of the network.
 
 \begin{figure}[H]
@@ -55,7 +55,7 @@ Fast R-CNN, shown in fig \ref{fig:2_fastrcnn}, combines the region proposals of 
 	\caption{\label{fig:2_fastrcnn} Fast R-CNN architecture. Image from \citet{fastrcnn}.}
 \end{figure}
 
-\subsection{Faster R-CNN\cite{fasterrcnn}}
+\subsection{Faster R-CNN \cite{fasterrcnn}}
 Faster R-CNN, shown in fig \ref{fig:2_fasterrcnn}, improves on Fast R-CNN by replacing the region proposal method with a region proposal network (RPN). The RPN is a fully convolutional network that takes the feature map from the CNN and outputs a set of rectangular object proposals, each with an objectness score. The RPN is trained end-to-end with the rest of the network, which allows the network to learn the region proposal method that works best for the task at hand. This greatly improves the speed of the network, as the RPN is much faster than the region proposal method used in Fast R-CNN.
 
 \begin{figure}[H]
@@ -64,7 +64,7 @@ Faster R-CNN, shown in fig \ref{fig:2_fasterrcnn}, improves on Fast R-CNN by rep
 	\caption{\label{fig:2_fasterrcnn} Faster R-CNN architecture. Image from \citet{fasterrcnn}.}
 \end{figure}
 
-\subsection{Vision Transformers\cite{vit}}
+\subsection{Vision Transformers \cite{vit}}
 In recent years, the availability of more data has led to the development of architectures that were not previously possible. One example is the transformer architecture \cite{transformers}, originally designed for natural language processing (NLP) tasks, but now also used in computer vision by \citet{vit} who call their approach Vision Transformers (ViT). ViT applies the standard transformers architecture to images with minimal changes and therefore shares most characteristics with transformers. Transformers performs best when pre-trained on large amounts of data before fine-tuning on a specific task. This is also the case for ViT, which is pre-trained on either the ImageNet-21k dataset or the JFT-300M dataset and then fine-tuned on various benchmarks, where it exceeds the CNN-based state-of-the-art. The ViT architecture is illustrated in Figure \ref{fig:2_vit}. The model starts by dividing the image into a fixed number of patches, which are linearly projected into a 1D vector. To account for the position of each patch, a position embedding is added to the input.
 
 \begin{figure}[H]
