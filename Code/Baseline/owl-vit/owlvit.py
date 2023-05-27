@@ -13,16 +13,17 @@ DO_NMS = True
 processor = AutoProcessor.from_pretrained("google/owlvit-base-patch32")
 model = OwlViTForObjectDetection.from_pretrained("google/owlvit-base-patch32")
 
-url = "http://images.cocodataset.org/val2017/000000039769.jpg"
-path = "../../../Shell_pics/IMG20230217104337.jpg"
+path = "../../../Data/shells/IMG20230217104337.jpg"
+impath = "../../../Data/Fixed_support/base/"
 #image = Image.open(requests.get(url, stream=True).raw)
 image = Image.open(path)
 texts = [["baltic_tellin", "cockle", "cut_through_shell", "oyster", "wedge", "mussel"]]
 if USE_TEXT:
     inputs = processor(text=texts, images=image, return_tensors="pt")
 else:
-    query_paths = [base + ".jpg" for base in texts[0]]
+    query_paths = [impath + base + ".jpg" for base in texts[0]]
     query_imgs = [Image.open(impath) for impath in query_paths]
+    print(query_imgs, image)
     inputs = processor(query_images=query_imgs, images=image, return_tensors="pt")
 
 for key, val in inputs.items():
