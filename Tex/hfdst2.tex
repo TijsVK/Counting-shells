@@ -128,7 +128,7 @@ The amount and type of data used in few-shot learning is also an important facto
 While one-shot learning is not a new concept, applying it to object detection is hard. Early applications used a siamese backbone, as is often seen in other one-shot applications, but this was not very successful \citep{One-shot-siamese}. However, recently OWL-ViT \citep{owlvit} improved one-shot object detection by a large margin, reaching 41.8 mAP for one-shot object detection on the COCO dataset. OWL-Vit will be discussed in more detail in section \ref{sec:2_owlvit}.
 
 
-\section{Metrics}
+\section{Metrics}\label{sec:2_metrics}
 In machine learning, it is important to test the model after training, to evaluate its performance. To test the model's accuracy a part of the initial dataset is split off into a test set and never used when training. As we have the ground truth for the test set we can compare it with the network output to find if the detections are correct. 
 
 To find if the model output matches the expected output we use the Intersection over Union (IoU) metric. This compares the area of the input and output bounding boxes for each detection by dividing the area of intersection by the area of union. If the IoU, calculated as shown in \ref{eq:IoU}, is above a threshold (th) it is considered a detection.
