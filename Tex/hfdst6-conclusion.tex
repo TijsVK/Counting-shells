@@ -1,0 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%                                                                 %
+%                            CHAPTER                              %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\chapter{Conclusion}
+
+In this thesis, we applied object detection to the field of shell detection. We created a small dataset of seashells as no such dataset existed. As the dataset is too small to apply traditional object detection, we used zero- and few-shot object detection using the OWL-ViT model.
+
+We found that zero-shot object detection is not performant enough to be used for shell detection, we suspect that this is due to the specific shell names never having been given during training. This is confirmed by trying classless object detection, with more generic keywords like 'shell' or 'seashell' as this yields better results. This classless detection seemed like it could be used to generate bounding box proposals for manual classification, however, we found that the results were too inconsistent to be used for this.
+
+We then explored few-shot object detection with various values for N. We found that for certain shells with distinct features, the model was able to detect them with a high accuracy. However, for shells that are more similar to each other, the model was not able to differentiate between them. This was to be expected as a human also has difficulty differentiating between these shells. The model could be used to detect certain shells with a high accuracy, but it is not able to detect all shells reliably. This is especially an issue if we want to use the model to detect shells that are currently not present in the dataset as some of those shells will be very similar to one another too.
+
+In conclusion, we found that the current SOTA in few-shot object detection could be used as an assisting tool for shell detection, but it is not able to reliably work independently. 
+
+
+\section*{Future work}
+In this section, we will discuss some possible future work that could be done to improve the results of this thesis.
+
+\begin{itemize}
+    \item Expand the dataset with more images and annotations: The current dataset is quite limited in size and variety. If more interest is shown in this field, it would be possible to further expand the dataset. This would open more avenues for future work, such as using more data-intensive trained models like YOLO or Faster R-CNN.
+    \item Correct the dataset: The dataset contains some annotations that are not correct. This causes the model to be wrongly punished at times. This is due to us not being experts in the field of seashells. By working more closely with experts, it would be possible to correct these annotations.
+\end{itemize}

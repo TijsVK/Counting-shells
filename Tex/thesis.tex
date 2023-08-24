@@ -10,6 +10,38 @@
 
 \usepackage[a4paper,left=3.5cm, right=2.5cm, top=3.5cm, bottom=3.5cm]{geometry}
 \usepackage[english]{babel}
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{100}
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
 \usepackage{graphicx}
 %\usepackage[latin1]{inputenc}           % om niet ascii karakters rechtstreeks te kunnen inputten
 \usepackage[utf8]{inputenc}            % commentarieer deze regel uit als je utf8 encoded files gebruikt in plaats van latin1
@@ -55,7 +87,7 @@
 %bijvoorbeeld het weglaten van een voorwoord, lijst met symbolen, ...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %voorwoord toevoegen?
-%\acknowledgementspagetrue
+\acknowledgementspagetrue
 \acknowledgements{voorwoord}			%.tex file met daarin het voorwoord
 
 %samenvatting toevoegen
@@ -95,18 +127,19 @@
 \academicyear{2022 - 2023}
 
 \promotorA[Promotor]{Prof. Dr. Ir. Toon Goedemé}
-\promotorB[Co-Promotor]{Ing. Tanguy Ophoff}
+\promotorB[Co-Promotor]{Dr. Ing. Tanguy Ophoff}
 
 \begin{document}
 %\selectlanguage{dutch} %due to incompatible syntax with the English style library and the extended features of the dutch library, I'll be modifying the dutch library to be English
 \selectlanguage{english} % For the English version
 \preface
 
-\input{hfdst1}
-\input{hfdst2}
-\input{hfdst3}
-%\input{hfdst4}
-%\input{hfdst5}
+\input{hfdst1-introduction}
+\input{hfdst2-dataset}
+\input{hfdst3-lit-review}
+\input{hfdst4-implementation}
+\input{hfdst5-results}
+\input{hfdst6-conclusion}
 % Bibliografie: referenties. De items zitten in bibliografie.bib
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Indien je ook de niet geciteerde werken in je bibliografie wil opnemen, commentarieer dan onderstaande regel uit!
@@ -116,8 +149,8 @@
 
 % Eventueel enkele appendices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\appendix
-%\input{bijlage1}
+\appendix
+\input{bijlage1}
 
 % Back cover: change according to the correct campus
 %\includepdf{private/back_fiiw_denayer.pdf}

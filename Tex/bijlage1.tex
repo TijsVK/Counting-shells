@@ -1,12 +1,98 @@
-\chapter{Uitleg over de appendices}
-Bijlagen worden bij voorkeur enkel elektronisch ter beschikking gesteld. Indien essentieel kunnen in overleg met de promotor bijlagen in de scriptie opgenomen worden of als apart boekdeel voorzien worden.
-
-Er wordt wel steeds een lijst met vermelding van alle bijlagen opgenomen in de scriptie. Bijlagen worden genummerd het een drukletter A, B, C,...
-
-Voorbeelden van bijlagen:\\
-Bijlage A: \qquad	Detailtekeningen van de proefopstelling \\
-Bijlage B: \qquad	Meetgegevens (op USB)
-\\
+\chapter{PR curves at full size} \label{app:pr_curves_full_size}
 
 
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{chapter5/text/classlessIoUPR.png}
+    \caption{PR curve classless zero-shot object detection.}
+    \label{fig:zero_shot_classless_appendix}
+\end{figure}
 
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{chapter5/text/classedIoUPR.png}
+    \caption{PR curve classed zero-shot object detection.}
+    \label{fig:zero_shot_classed_appendix}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{chapter5/text/classesPR.png}
+    \caption{PR curve individual classes in zero-shot object detection.}
+    \label{fig:zero_shot_classed_classes_PR_appendix}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{chapter5/img/classless\_1\_iouPR.png}
+    \caption{PR curve classless 1-shot object detection.}
+    \label{fig:1_shot_appendix}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{chapter5/img/classed\_1\_iouPR.png}
+    \caption{PR curve classed 1-shot object detection.}
+    \label{fig:2_shot_appendix}
+\end{figure}
+
+
+
+
+\chapter{PR curves for N shot} \label{app:pr_curves_n_shot}
+
+\begin{figure}[H]
+    \begin{adjustwidth}{-0.5in}{-0.5in}
+        \centering
+        \begin{subfigure}[b]{0.4\pdfpagewidth}
+            \includegraphics[width=\textwidth]{chapter5/img/classless\_5\_iouPR.png}
+            \caption{PR curve 5-shot object detection.}
+            \label{fig:5_n_shot_classless_5}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.4\pdfpagewidth}
+            \includegraphics[width=\textwidth]{chapter5/img/classless\_10\_iouPR.png}
+            \caption{PR curve 10-shot object detection.}
+            \label{fig:5_n_shot_classless_10}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\pdfpagewidth}
+            \includegraphics[width=\textwidth]{chapter5/img/classless\_20\_iouPR.png}
+            \caption{PR curve 20-shot object detection.}
+            \label{fig:5_n_shot_classless_20}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.4\pdfpagewidth}
+            \includegraphics[width=\textwidth]{chapter5/img/classless\_50\_iouPR.png}
+            \caption{PR curve 50-shot object detection.}
+            \label{fig:5_n_shot_classless_50}
+        \end{subfigure}
+    \end{adjustwidth}
+    \caption{N-shot classless object detection.}
+    \label{fig:5_n_shot_classless}
+\end{figure}
+
+
+\begin{figure}[H]
+    \begin{adjustwidth}{-0.5in}{-0.5in}
+        \centering
+        \begin{subfigure}[b]{0.4\pdfpagewidth}
+            \includegraphics[width=\textwidth]{chapter5/img/classed\_5\_iouPR.png}
+            \caption{PR curve 5-shot object detection.}
+            \label{fig:5_n_shot_classed_5}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.4\pdfpagewidth}
+            \includegraphics[width=\textwidth]{chapter5/img/classed\_10\_iouPR.png}
+            \caption{PR curve 10-shot object detection.}
+            \label{fig:5_n_shot_classed_10}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\pdfpagewidth}
+            \includegraphics[width=\textwidth]{chapter5/img/classed\_20\_iouPR.png}
+            \caption{PR curve 20-shot object detection.}
+            \label{fig:5_n_shot_classed_20}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.4\pdfpagewidth}
+            \includegraphics[width=\textwidth]{chapter5/img/classed\_50\_iouPR.png}
+            \caption{PR curve 50-shot object detection.}
+            \label{fig:5_n_shot_classed_50}
+        \end{subfigure}
+    \end{adjustwidth}
+    \caption{N-shot object detection.}
+    \label{fig:5_n_shot}
+\end{figure}

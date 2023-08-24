@@ -1,0 +1,76 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%                                                                 %
+%                            CHAPTER                              %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+\chapter{Implementation}
+In this chapter, we will discuss the implementation. We first introduce the general setup, then we discuss the implementation of the model.
+
+% general
+%   brambox
+%   BBAnnotatedImage
+%     functions
+%     __init__
+% owl-vit
+%   scenic
+%     jax
+%   detection
+
+\section{General setup}
+In this section, we will discuss the general setup, which is universal for any implementation. We will discuss the brambox library which we use for evaluating the results. We will also discuss our own class we use for working with the dataset.
+
+\subsection{Brambox}
+Brambox \citep{brambox} (Basic Requisites for Algorithms on iMages toolBOX) is a library for working with object detection algorithms and datasets. It offers functionality for handling annotations and detections, as well as evaluating the results. 
+
+Brambox uses pandas' DataFrames for storing data. The io module offers functions for loading and saving annotations or detections. This allows us to save checkpoints between time or compute-intensive steps. We do however have to manually make sure the outputs of our model are put into the correct format. With both annotations and detections in brambox format, the stat module offers functions for evaluating the results like precision-recall (PR) curves and average precision (AP). Plotting these gives us a visual representation of the results.
+
+\subsection{BBAnnotatedImage}
+To make working with the dataset easier we made a class that contains both an image and its annotations. Storing these together allows us to change the orientation and scale of our images which we do during initialization, making sure all images are in landscape orientation and optionally resized with a given scale. Besides storing it also offers some functions for working with the image, these can be found in Table \ref{tab:3_bbannotatedimage_functions}. It also makes sure all images are in landscape orientation and optionally resizes them with a given scale during initialization.
+
+\begin{table}[]
+    \begin{tabular}{|l|p{3.9cm}|l|p{5cm}|}
+    \hline
+    Function    & Arguments                                    & Type   & Description                     \\ \hline
+    from\_xml() & xml\_filepath, image\_dir, (optional: scale) & Static & Initialize class from xml\_file \\ \hline
+    draw\_annotations() & (optional: resize) & & Draw annotations on image and return (optionally resized)\\ \hline
+    object\_image\_cutouts() & & Property & Return cutouts of the annotated objects \\ \hline
+    objects() & & Property & Return a list of tuples containing cutouts and their class \\ \hline
+    npimage() & & Property & Return the image as NumPy array \\ \hline
+
+    \end{tabular}
+    \centering
+    \caption{Functions of the BBAnnotatedImage class.}
+    \label{tab:3_bbannotatedimage_functions}
+\end{table}
+
+\section{OWL-ViT}
+In this section, we will discuss the implementation of the OWL-ViT model. We will first discuss Scenic, in which OWL-ViT is implemented. Then we will discuss our specific implementation of the model.
+
+\subsection{Scenic}
+"Scenic is a codebase with a focus on research around attention-based models for computer vision ... More precisely, Scenic is a: (i) set of shared light-weight libraries solving tasks commonly encountered tasks when training large-scale (i.e. multi-device, multi-host) vision models; and (ii) several projects containing fully fleshed out problem-specific training and evaluation loops using these libraries." as per \citet{scenic}.
+
+The model we will use is one such project that is included in Scenic. When the OWL-ViT model was first introduced, an online "playground" was made available where the model could be tested by anyone. Though it is no longer available, the jupyter notebook used for it is included as part of the OWL-ViT project in Scenic. This notebook is used as the basis for the implementation of the model.
+
+\subsection{Notebook implementation} \label{sec:3_notebook_implementation}
+While the notebook does give us a good starting point, we mostly just use the inference module it uses while discarding the rest as it was intended for the visual-only online playground and we're mostly interested in statistics. 
+
+\subsubsection*{Setup}
+
+We start by loading our dataset into a list of BBAnnotatedImages by looping over all XML files in our annotations folder and loading them using the BBAnnotatedImage.from\_xml() function. 
+
+The loading of the model is unchanged, except we use a larger version of the model. The playground used CLIP B16, while we're using CLIP L14. A previous iteration of this paper used CLIP B32.
+
+\subsubsection*{Inference}
+
+We first obtain the embeddings. For text embeddings, this is easy as the inference module has a function that takes a tuple with any amount of strings and returns the embeddings. For image embeddings, only 1-shot 1-way inference was implemented in the playground. We can however implement k-shot by averaging multiple embeddings of the same class. By afterward simply merging these into a single NumPy array, we can use the same function for inference as for text embeddings (model.get\_scores()). To reduce the number of images we have to remove from the test set, we start by calculating embeddings for the class with the least amount of annotations and work our way up. As we remove all images from which we get our query embeddings, we could use all annotations from those images, instead of limiting ourselves to N-shot. Though interesting to do, it goes against the definition of N-shot learning.
+
+Next, we create a DataFrame in the Brambox format at the exact size to store all our detections. We then loop over all images in our dataset, adding the detections to the DataFrame after making sure they are in the correct format (OWL-ViT returns normalized centered coordinates, while Brambox expects absolute top-left coordinates). 
+
+\subsubsection*{Post-processing and evaluation} 
+
+We add an 'IoU' column to the DataFrame, which we fill with the threshold at which the detection will be eliminated when we do non-maximum suppression (NMS). 
+
+We optionally remove the labels from both the annotations and detections, to see how to model performs at detecting objects, regardless of class. 
+
+To evaluate the results, we use Brambox to calculate the PR curves and AP for various IoU thresholds. We also save some images with annotations and detections for various IoU and confidence thresholds for a more visual representation of the results.
